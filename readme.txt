@@ -1,5 +1,5 @@
 ﻿===  WooCommerce - Korean Juso Search button ===
-Contributors: aloepig (LEE BYUNG JIK)
+Contributors: aloepig
 Tags: woopay,  woocommerce, korea, postcode, korean juso, address search
 Requires at least: 5.0
 Tested up to: 5.1
