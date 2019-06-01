@@ -18,30 +18,29 @@
 
 defined( 'ABSPATH' ) || exit;
 
-function wc_juso_button_scripts(){
-    wp_enqueue_script( 'jh_juso_search_script', plugin_dir_url( __FILE__ ) . 'js/juso.go.kr.js', array('jquery'), '1.0.0', false ); 
-    wp_enqueue_script( 'jquery-ui-selectable');
-    wp_enqueue_style('jh_juso_search_css', plugins_url('css/juso.go.kr.css', __FILE__));
+function aloepig_wc_juso_button_scripts(){
+    wp_enqueue_script( 'aloepig_wc_juso_search_script', plugin_dir_url( __FILE__ ) . 'assets/js/juso.go.kr.js', array('jquery'), '1.0.0', false ); 
+    wp_enqueue_script( 'jquery-ui-selectable' );
+}
+
+function aloepig_wc_juso_button_style(){
+    wp_enqueue_style('aloepig_wc_juso_search_css', plugins_url('assets/css/juso.go.kr.css', __FILE__));
 }
 
 // woocommerce : 주소검색 버튼
-function jh_juso_search_button() {
+function wc_juso_search_button() {
     ?>
-    <input type="text" id="jh_juso_search_text">
-    <button type="button" id="jh_juso_search_button" onclick="getJHJusoSearchText();">주소 검색</button>
-    <div id=jh_juso_list></div>
-    <script>
-   // jQuery("jh_juso_search_button").click(getAddr());
-    function jusoSearch() {}
-    </script>
+    <input type="text" id="wc_juso_search_text">
+    <button type="button" id="wc_juso_search_button" onclick="getJHJusoSearchText();">주소 검색</button>
+    <div id=wc_juso_list></div>
     <?php
 }
 
-add_action( 'wp_enqueue_scripts', 'wc_juso_button_scripts');
-add_action( 'wp_enqueue_style', 'wc_juso_button_scripts');
+add_action('wp_enqueue_scripts', 'aloepig_wc_juso_button_scripts');
+add_action('wp_enqueue_style', 'aloepig_wc_juso_button_style');
 
 
-add_action( 'woocommerce_after_checkout_billing_form' ,'jh_juso_search_button', 20);
+add_action('woocommerce_after_checkout_billing_form' ,'wc_juso_search_button', 20);
 
 //2019.5.30 테스트
 // https://docs.woocommerce.com/document/tutorial-customising-checkout-fields-using-actions-and-filters/
