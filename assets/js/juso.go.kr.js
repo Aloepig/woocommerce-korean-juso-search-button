@@ -1,5 +1,5 @@
 function getJHJusoSearchText(){
-	getAddr(jQuery('#jh_juso_search_text').val());
+	getAddr(jQuery('#wc_juso_search_text').val());
 }
 
 function getAddr(jusoSearchText){
@@ -32,7 +32,7 @@ function getAddr(jusoSearchText){
                                      
 function makeListJson(jsonStr){
 	var htmlStr = "";
-	htmlStr += "<table id=jh_juso_results>";
+	htmlStr += "<table id=wc_juso_search_results>";
 	// jquery를 이용한 JSON 결과 데이터 파싱
 	jQuery(jsonStr.results.juso).each(function(){
 		htmlStr += "<tr>";
@@ -65,7 +65,6 @@ function makeListJson(jsonStr){
 	});
 	htmlStr += "</table>";
 	// 결과 HTML을 FORM의 결과 출력 DIV에 삽입
-	jQuery("#jh_juso_list").html(htmlStr);
-	
-	jQuery("#jh_juso_results").selectable();
+	jQuery("#wc_juso_list").html(htmlStr);
+	jQuery("#wc_juso_search_results").selectable();
 }
