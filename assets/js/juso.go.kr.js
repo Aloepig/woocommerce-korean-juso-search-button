@@ -1,10 +1,13 @@
-function getJHJusoSearchText(){
-	getAddr(jQuery('#wc_juso_search_text').val());
+// input id 형식: wc_[addressType]_juso_search_text
+function getWCJusoSearchText(addressType){
+	var jusoSearchTextId = "wc_" + addressType + "_juso_search_text";
+	getAddr(jQuery('#' + jusoSearchTextId).val(), addressType);
 }
 
 // jusoSearchText: 검색어
-// pageType: 페이지 종류
-function getAddr(jusoSearchText, pageType){
+// addressType: billing, shipping
+function getAddr(jusoSearchText, addressType){
+	var jusoListId = "wc_" + addressType + "_juso_list";
 	// AJAX 주소 검색 요청
 	jQuery.ajax({
 		url:"http://www.juso.go.kr/addrlink/addrLinkApi.do"
@@ -13,14 +16,14 @@ function getAddr(jusoSearchText, pageType){
 		// ,data:jQuery("#form").serialize() 						// 요청 변수 설정
 		,dataType:"json"											// 데이터 결과 : JSON
 		,success:function(jsonStr){	
-			jQuery("#jh_juso_list").html("");						// 결과 출력 영역 초기화
+			jQuery("#wc_"+ jusoListId).html("");						// 결과 출력 영역 초기화
 			var errCode = jsonStr.results.common.errorCode; 		// 응답코드
 			var errDesc = jsonStr.results.common.errorMessage;		// 응답메시지
 			if(errCode != "0"){ 	
-				alert(errCode+"="+errDesc);
+				alert(errCode+":"+errDesc);
 			}else{
 				if(jsonStr!= null){
-					makeListJson(jsonStr);							// 결과 JSON 데이터 파싱 및 출력
+					makeListJson(jsonStr, addressType);							// 결과 JSON 데이터 파싱 및 출력
 				}
 			}
 		}
@@ -30,26 +33,29 @@ function getAddr(jusoSearchText, pageType){
 	});
 }
                                      
-function makeListJson(jsonStr, pageType){
+function makeListJson(jsonStr, addressType){
+	var jusoListId = "wc_" + addressType + "_juso_list";
+	var jusoTrClass = "wc_" + addressType + "_juso_tr";
+	var addressId = addressType + "_address_1";
+	var postcodeId = addressType + "_postcode"; 
 	var htmlStr = "";
-	htmlStr += "<table id=wc_juso_search_results>";
+	htmlStr += "<table class=wc_juso_search_results>";
 	// jquery를 이용한 JSON 결과 데이터 파싱
 	jQuery(jsonStr.results.juso).each(function(){
-		htmlStr += "<tr class=wc_juso_tr>";
+		htmlStr += "<tr class="+ jusoTrClass +">";
 		htmlStr += "<td>"+this.roadAddr+"</td>";		// 도로명 주소
-		//htmlStr += "<td>"+this.siNm+"</td>";			// 시도명
 		htmlStr += "<td>"+this.zipNo+"</td>";			// 우편번호
 		htmlStr += "</tr>";
 	});
 	htmlStr += "</table>";
 	// 결과 HTML을 FORM의 결과 출력 DIV에 삽입
-	jQuery("#wc_juso_list").html(htmlStr);
-	jQuery("#wc_juso_search_results").selectable();
+	jQuery("#" + jusoListId).html(htmlStr);
+	jQuery(".wc_juso_search_results").selectable();
 	
 	jQuery(function(){
-		jQuery('tr').click(function(){
-			jQuery('#billing_address_1').val(jQuery(this).children().eq(0).text());
-			jQuery('#billing_postcode').val(jQuery(this).children().eq(1).text());
+		jQuery('tr.'+ jusoTrClass).click(function(){
+			jQuery('#' + addressId).val(jQuery(this).children().eq(0).text());
+			jQuery('#' + postcodeId).val(jQuery(this).children().eq(1).text());
 		});
 	});
 }
