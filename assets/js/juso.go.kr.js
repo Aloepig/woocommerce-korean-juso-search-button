@@ -47,10 +47,12 @@ function makeListJson(jsonStr, addressType){
 		htmlStr += "<td>"+this.zipNo+"</td>";			// 우편번호
 		htmlStr += "</tr>";
 	});
-	htmlStr += "</table>";
+
 	// 결과 HTML을 FORM의 결과 출력 DIV에 삽입
 	jQuery("#" + jusoListId).html(htmlStr);
-	jQuery(".wc_juso_search_results").selectable();
+	jQuery("table.wc_juso_search_results").selectable({
+		filter: 'tr'
+	});
 	
 	jQuery(function(){
 		jQuery('tr.'+ jusoTrClass).click(function(){

@@ -12,7 +12,15 @@
  /**
  * Global Styles
  */
- #wc_juso_search_results .ui-selecting { background: #FECA40; }
- #wc_juso_search_results .ui-selected { background: #F39814; color: white; }
+.ui-selecting td { 
+    background: goldenrod !important; 
+}
+.ui-selected td { 
+    background: goldenrod !important; 
+}
 
- #jh_juso_search_button { color: #F39814; }
+.wc_juso_search_button { background-color: #F39814; }
+ 
+input:read-only { 
+    background-color: gold;
+}
