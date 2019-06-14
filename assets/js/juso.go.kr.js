@@ -10,7 +10,7 @@ function getAddr(jusoSearchText, addressType){
 	var jusoListId = "wc_" + addressType + "_juso_list";
 	// AJAX 주소 검색 요청
 	jQuery.ajax({
-		url:"http://www.juso.go.kr/addrlink/addrLinkApi.do"
+		url:"https://www.juso.go.kr/addrlink/addrLinkApi.do"
 		,type:"post"
         ,data: {currentPage:"1", countPerPage:"12", resultType:"json", confmKey:"U01TX0FVVEgyMDE5MDQyMzE2MzUxMTEwODY3NDI=", keyword:jusoSearchText}
 		// ,data:jQuery("#form").serialize() 						// 요청 변수 설정
