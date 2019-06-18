@@ -12,15 +12,13 @@
  /**
  * Global Styles
  */
-.ui-selecting td { 
-    background: goldenrod !important; 
-}
-.ui-selected td { 
-    background: goldenrod !important; 
-}
+.ui-selecting td { background: goldenrod !important; }
+.ui-selected td { background: goldenrod !important; }
 
-.wc_juso_search_button { background-color: #F39814; }
- 
-input:read-only { 
-    background-color: #F39814 !important;
+#juso_search_result_current_page {
+    margin: 6px;
 }
+.wc_juso_search_button_current_page { background: green }
+/* input:read-only 부분*/
+.wc_juso_search_button { background-color: #F39814; } 
+#billing_address_1, #billing_postcode, #shipping_address_1, #shipping_postcode { background-color: #F39814 ; }

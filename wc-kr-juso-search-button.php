@@ -83,7 +83,7 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
         public function billingJusoSearchButton() {
             ?>
             <input type="text" id="wc_billing_juso_search_text" placeholder="0로0길0/번지/건물명">
-            <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('billing');">우편번호 검색</button>
+            <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('billing','1');">우편번호 검색</button>
             <div id=wc_billing_juso_list></div>
             <?php
         }
@@ -91,7 +91,7 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
         public function shippingJusoSearchButton() {
             ?>
             <input type="text" id="wc_shipping_juso_search_text" placeholder="0로0길0/번지/건물명">
-            <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('shipping');">우편번호 검색</button>
+            <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('shipping','1');">우편번호 검색</button>
             <div id=wc_shipping_juso_list></div>
             <?php
         }
