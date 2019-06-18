@@ -22,5 +22,5 @@
 .wc_juso_search_button { background-color: #F39814; }
  
 input:read-only { 
-    background-color: gold;
+    background-color: #F39814 !important;
 }
