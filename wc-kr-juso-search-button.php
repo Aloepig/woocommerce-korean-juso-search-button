@@ -28,25 +28,36 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
             wp_enqueue_style( 'wc_kr_juso_search_css', plugin_dir_url( __FILE__ ) . 'assets/css/juso.go.kr.css', array(), WC_KR_JUSO_SEARCH_BUTTON_VERSION, 'all');
             wp_enqueue_script( 'jquery-ui-selectable' );
 
-            self::setAddActionCheckout();
-            self::setAddFilterCheckout();
+            self::setAddActionForJusoSearch();
+            self::setAddFilterForJusoSerch();
         }
  
-        private function setAddActionCheckout() {
+        private function setAddActionForJusoSearch() {
             // checkout 부분
             add_action('woocommerce_after_checkout_billing_form' , array('Aloepig_Juso_Search_Button_Plugin', 'billingJusoSearchButton'));            
             add_action('woocommerce_after_checkout_shipping_form' , array('Aloepig_Juso_Search_Button_Plugin', 'shippingJusoSearchButton'));
             // edit address 부분
             add_action('woocommerce_after_edit_address_form_billing' , array('Aloepig_Juso_Search_Button_Plugin', 'billingJusoSearchButton'));            
             add_action('woocommerce_after_edit_address_form_shipping' , array('Aloepig_Juso_Search_Button_Plugin', 'shippingJusoSearchButton'));
+            // edit account 부분
+            add_action('woocommerce_after_edit_account_form', function(){
+                ?>
+                <script>
+                   jQuery("label[for='account_last_name']").html("전화번호<span class=required>*</span>");
+                </script>
+                <?php 
+            });
         }
 
-        private function setAddFilterCheckout() {
+        private function setAddFilterForJusoSerch() {
             // 주소 공통
             add_filter('woocommerce_default_address_fields', function($address_fields){
                 $address_fields['last_name']['label'] = WC_KR_JUSO_SEARCH_BUTTON_LAST_NAME;
                 $address_fields['postcode']['custom_attributes'] = array('readonly'=>'readonly');
                 $address_fields['address_1']['custom_attributes'] = array('readonly'=>'readonly'); 
+                $address_fields['company']['required '] = false; 
+                $address_fields['state']['required '] = false; 
+                $address_fields['city']['required '] = false; 
                 return $address_fields;
             });
             // 청구주소(기본주소) 공통
@@ -61,10 +72,10 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
                 $fields['billing_phone']['priority'] = 8;  
                 $fields['billing_address_1']['priority'] = 9;  
                 $fields['billing_address_2']['priority'] = 10;  
-                $fields['billing_postcode']['priority'] = 11;
-                
+                $fields['billing_postcode']['priority'] = 11;      
+                // unset하기 전에 반드시 required를 false해야 한다.(2019.06.18)  
+                $fields['billing_phone']['required'] = false;  
                 unset($fields['billing_company']);
-                unset($fields['billing_country']);
                 unset($fields['billing_state']);
                 unset($fields['billing_city']);
                 unset($fields['billing_phone']);
@@ -73,7 +84,6 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
             // 배송주소(다른배송지) 공통
             add_filter('woocommerce_shipping_fields', function($fields){
                 unset($fields['shipping_company']);
-                unset($fields['shipping_country']);
                 unset($fields['shipping_state']);
                 unset($fields['shipping_city']);
                 return $fields; 
