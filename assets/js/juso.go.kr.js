@@ -39,16 +39,17 @@ function makeListJson(jsonStr, addressType, currentPage){
 	var jusoTrClass = "wc_" + addressType + "_juso_tr";
 	var addressId = addressType + "_address_1";
 	var postcodeId = addressType + "_postcode"; 
+	var jusoSearchResultsTableClass = "wc_juso_search_results";
+	var buttonPageNumClass = "wc_juso_search_button_page_num";
+	var buttonCurrentPageClass = "wc_juso_search_button_current_page";
 	var totalPageNum = Number(jsonStr.results.common.totalCount)/ Number(jsonStr.results.common.countPerPage);
 	// 너무 많은 검색결과는 제한함
 	var MAX_PAGE_NUM = 6;
 	if (totalPageNum > MAX_PAGE_NUM) {
 		totalPageNum = MAX_PAGE_NUM;
 	}
-	var buttonPageNumClass = "wc_juso_search_button_page_num";
-	var buttonCurrentPageClass = "wc_juso_search_button_current_page";
 	var htmlStr = "";
-	htmlStr += "<table class=wc_juso_search_results>";
+	htmlStr += "<table class=" + jusoSearchResultsTableClass + ">";
 	// jquery를 이용한 JSON 결과 데이터 파싱
 	jQuery(jsonStr.results.juso).each(function(){
 		htmlStr += "<tr class="+ jusoTrClass +">";
@@ -69,7 +70,7 @@ function makeListJson(jsonStr, addressType, currentPage){
 
 	// 결과 HTML을 FORM의 결과 출력 DIV에 삽입
 	jQuery("#" + jusoListId).html(htmlStr);
-	jQuery("table.wc_juso_search_results").selectable({
+	jQuery("table." + jusoSearchResultsTableClass).selectable({
 		filter: 'tr'
 	});
 	
@@ -77,6 +78,7 @@ function makeListJson(jsonStr, addressType, currentPage){
 		jQuery('tr.'+ jusoTrClass).click(function(){
 			jQuery('#' + addressId).val(jQuery(this).children().eq(0).text());
 			jQuery('#' + postcodeId).val(jQuery(this).children().eq(1).text());
+			jQuery('.' + jusoSearchResultsTableClass).hide();
 		});
 	});
 }
