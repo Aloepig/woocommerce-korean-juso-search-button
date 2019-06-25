@@ -24,8 +24,8 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
     class Aloepig_Juso_Search_Button_Plugin
     {
         public static function init() {
-            wp_enqueue_script( 'wc_kr_juso_search_script', plugin_dir_url( __FILE__ ) . 'assets/js/juso.go.kr.js', array('jquery'), WC_KR_JUSO_SEARCH_BUTTON_VERSION, false ); 
-            wp_enqueue_style( 'wc_kr_juso_search_css', plugin_dir_url( __FILE__ ) . 'assets/css/juso.go.kr.css', array(), WC_KR_JUSO_SEARCH_BUTTON_VERSION, 'all');
+            wp_enqueue_script( 'wc_kr_juso_search_script', plugin_dir_url( __FILE__ ) . 'assets/js/wc-kr-juso-search-button.js', array('jquery'), WC_KR_JUSO_SEARCH_BUTTON_VERSION, false ); 
+            wp_enqueue_style( 'wc_kr_juso_search_css', plugin_dir_url( __FILE__ ) . 'assets/css/wc-kr-juso-search-button.css', array(), WC_KR_JUSO_SEARCH_BUTTON_VERSION, 'all');
             wp_enqueue_script( 'jquery-ui-selectable' );
 
             self::setAddActionForJusoSearch();
@@ -97,10 +97,9 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
             <div id=wc_billing_juso_list></div>
             <script>
             	jQuery(function(){
-                    console.log(jQuery('#billing_address_1').val().length);
-                    console.log(jQuery('#billing_postcode').val().length);
-                    //jQuery('#billing_address_1').hide();
-                    //jQuery('#billing_postcode').hide();
+                    if ( jQuery('#billing_address_1').val().length === 0 || jQuery('#billing_postcode').val().length === 0){
+                        AloepigHideAndShow.billingAddressHide();
+                    }                
 	            });
             </script>
             <?php
@@ -112,6 +111,11 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
             <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('shipping','1');">우편번호 검색</button>
             <div id=wc_shipping_juso_list></div>
             <script>
+            	jQuery(function(){
+                    if ( jQuery('#shipping_address_1').val().length === 0 || jQuery('#shipping_postcode').val().length === 0){
+                        AloepigHideAndShow.shippingAddressHide();
+                    }                
+	            });
             </script>
             <?php
         }
