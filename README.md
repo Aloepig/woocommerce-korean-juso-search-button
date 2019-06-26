@@ -5,6 +5,9 @@ When you enter woocommerce address, add address search button using http://www.j
 
 # woocommerce-ko_KR.po 번역 수정 (플러그인에 맞게)
 Poedit 사용: po 수정 후 mo 로 컴파일해야 한다.
+
+wordpress\wp-content\languages\plugins 
+
 * Billing Address 기본 주소
 * Billing Address. 기본 주소.
 * Billing details 기본 주소로 배송
