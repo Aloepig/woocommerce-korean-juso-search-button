@@ -10,7 +10,7 @@
  */
 
  /**
- * Global Styles
+ * jquery-ui-selectable 부분
  */
 .ui-selecting td { background: goldenrod !important; }
 .ui-selected td { background: goldenrod !important; }
@@ -18,6 +18,24 @@
 #juso_search_result_current_page { margin: 6px; }
 .wc_juso_search_button_current_page { background: green }
 
-/* input:read-only 부분*/
+/**
+ * input:read-only 부분
+ */
 .wc_juso_search_button { background-color: #F39814; } 
 #billing_address_1, #billing_postcode, #shipping_address_1, #shipping_postcode { background-color: #4A4F5A; color: white;}
+
+/**
+ * alert massage 부분
+ */
+.alert {
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: none;
+}
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }

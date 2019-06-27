@@ -1,6 +1,7 @@
 // input id 형식: wc_[addressType]_juso_search_text
 function getWCJusoSearchText(addressType, currentPage){
 	var jusoSearchTextId = "wc_" + addressType + "_juso_search_text";
+	jQuery("#wc_" + addressType + "_juso_search_text").focus();
 	jusoGoKr.getKrStreetNameAddress(jQuery('#' + jusoSearchTextId).val(), addressType, currentPage);
 }
 
@@ -22,15 +23,17 @@ var jusoGoKr = {
 				var errCode = jsonStr.results.common.errorCode; 		// 응답코드
 				var errDesc = jsonStr.results.common.errorMessage;		// 응답메시지
 				if(errCode != "0"){ 	
-					alert(errDesc + " [" + errCode + "]");
+					console.warn("[juso.go.kr Error Code: " + errCode + "]" + errDesc );
+					AloepigHideAndShow.alertMassageShow(addressType,errDesc);
 				}else{
 					if(jsonStr!= null){
 						jusoGoKr.makeListJsonForJusoSearchTable(jsonStr, addressType, currentPage);							// 결과 JSON 데이터 파싱 및 출력
+						AloepigHideAndShow.alertMassageHide(addressType);
 					}
 				}
 			}
 			,error: function(xhr,status, error){
-				console.error("에러발생");								// AJAX 호출 에러
+				console.error("AJAX 호출 에러 발생. juso.go.kr API 참조할 것!");								// AJAX 호출 에러
 			}
 		});
 	},
@@ -112,5 +115,12 @@ var AloepigHideAndShow = {
 	},
 	jusoSearchResultsTableHide: function(jusoSearchResultsTableID){
 		jQuery('#' + jusoSearchResultsTableID).hide();				
+	},
+	alertMassageShow: function(addressType, errDesc){
+		jQuery('#wc_' + addressType + "_juso_search_alert_massage").text(errDesc);
+		jQuery('#wc_' + addressType + "_juso_search_alert_massage").show();
+	},
+	alertMassageHide: function(addressType){
+		jQuery('#wc_' + addressType + "_juso_search_alert_massage").hide();
 	}
 }

@@ -92,8 +92,9 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
 
         public function billingJusoSearchButton() {
             ?>
-            <input type="text" id="wc_billing_juso_search_text" placeholder="주소 검색하세요">
-            <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('billing','1');">우편번호 검색</button>
+            <div class="alert alert-danger" id="wc_billing_juso_search_alert_massage"></div>
+            <input type="text" id="wc_billing_juso_search_text" placeholder="검색어를 입력 하세요">
+            <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('billing','1');">주소 검색</button>
             <div id=wc_billing_juso_list></div>
             <script>
             	jQuery(function(){
@@ -107,8 +108,9 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
 
         public function shippingJusoSearchButton() {
             ?>
-            <input type="text" id="wc_shipping_juso_search_text" placeholder="주소 검색하세요">
-            <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('shipping','1');">우편번호 검색</button>
+            <div class="alert alert-danger" id="wc_shipping_juso_search_alert_massage"></div>
+            <input type="text" id="wc_shipping_juso_search_text" placeholder="검색어를 입력 하세요">
+            <button type="button" class="wc_juso_search_button" onclick="getWCJusoSearchText('shipping','1');">주소 검색</button>
             <div id=wc_shipping_juso_list></div>
             <script>
             	jQuery(function(){
