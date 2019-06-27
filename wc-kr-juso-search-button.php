@@ -101,7 +101,13 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
                     if ( jQuery('#billing_address_1').val().length === 0 || jQuery('#billing_postcode').val().length === 0){
                         AloepigHideAndShow.billingAddressHide();
                     }                
-	            });
+                });
+                jQuery("#wc_billing_juso_search_text").keypress(function(e){
+                    if(e.keyCode == 13){
+                        getWCJusoSearchText('billing','1');
+                        e.preventDefault();
+                    }
+                })
             </script>
             <?php
         }
@@ -117,7 +123,13 @@ if ( !class_exists( 'Aloepig_Juso_Search_Button_Plugin' ) ) {
                     if ( jQuery('#shipping_address_1').val().length === 0 || jQuery('#shipping_postcode').val().length === 0){
                         AloepigHideAndShow.shippingAddressHide();
                     }                
-	            });
+                });
+                jQuery("#wc_shipping_juso_search_text").keypress(function(e){
+                    if(e.keyCode == 13){
+                        getWCJusoSearchText('shipping','1');
+                        e.preventDefault();
+                    }
+                })
             </script>
             <?php
         }
