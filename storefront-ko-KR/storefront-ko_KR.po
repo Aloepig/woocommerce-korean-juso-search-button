@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-07-08 10:30+0900\n"
+"PO-Revision-Date: 2019-07-08 11:03+0900\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "X-Generator: Poedit 2.2.3\n"
 "Last-Translator: \n"
@@ -638,7 +638,7 @@ msgstr "할인 판매 중"
 #: inc/nux/class-storefront-nux-starter-content.php:1074
 #: inc/woocommerce/storefront-woocommerce-template-functions.php:523
 msgid "Best Sellers"
-msgstr "베스트셀러"
+msgstr "장흥다원 인기상품"
 
 #: inc/nux/class-storefront-nux-starter-content.php:1105
 msgid ""
