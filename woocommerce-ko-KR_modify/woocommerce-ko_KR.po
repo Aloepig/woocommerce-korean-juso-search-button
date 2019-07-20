@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-26 14:37+0900\n"
+"PO-Revision-Date: 2019-07-20 16:02+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15153,7 +15153,7 @@ msgstr[0] "완료 <span class=\"count\">(%s)</span>"
 #: includes/wc-order-functions.php:98 includes/class-wc-post-types.php:518
 msgctxt "Order status"
 msgid "Completed"
-msgstr "완료됨"
+msgstr "완료됨(배송시작)"
 
 #. translators: %s: number of orders
 #: includes/class-wc-post-types.php:515
@@ -15175,7 +15175,7 @@ msgstr[0] "진행 중 <span class=\"count\">(%s)</span>"
 #: includes/wc-order-functions.php:96 includes/class-wc-post-types.php:500
 msgctxt "Order status"
 msgid "Processing"
-msgstr "처리중"
+msgstr "주문 처리중"
 
 #. translators: %s: number of orders
 #: includes/class-wc-post-types.php:497
@@ -20550,7 +20550,7 @@ msgstr "완료"
 #: includes/admin/list-tables/class-wc-admin-list-table-orders.php:285
 #: includes/admin/list-tables/class-wc-admin-list-table-orders.php:562
 msgid "Processing"
-msgstr "처리중"
+msgstr "주문 처리중"
 
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:303
 #: includes/admin/reports/class-wc-report-downloads.php:194
