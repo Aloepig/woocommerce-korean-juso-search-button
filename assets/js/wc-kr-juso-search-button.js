@@ -40,7 +40,6 @@ var jusoGoKr = {
         });
     },
     makeListJsonForJusoSearchTable: function(jsonStr, addressType, currentPage) {
-        console.log(jsonStr);
         var jusoListId = "wc_" + addressType + "_juso_list";
         var jusoTrClass = "wc_" + addressType + "_juso_tr";
         var addressId = addressType + "_address_1";
