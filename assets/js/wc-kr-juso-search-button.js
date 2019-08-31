@@ -59,10 +59,10 @@ var jusoGoKr = {
         // jquery를 이용한 JSON 결과 데이터 파싱
         jQuery(jsonStr.results.juso).each(function() {
             htmlStr += "<tr class=" + jusoTrClass + ">";
-            htmlStr += "<td>" + this.roadAddr + "<small>(" +
+            htmlStr += "<td>" + this.roadAddr + "<small> (" +
                 this.emdNm + this.liNm + this.lnbrMnnm + "-" + this.lnbrSlno // 도로명 주소 (지번주소 읍면동명, 법정리명, 지번본번(번지), 지번부번(호))
                 +
-                " )</small></td>";
+                ")</small></td>";
             htmlStr += "<td>" + this.zipNo + "</td>"; // 우편번호
             htmlStr += "</tr>";
         });
